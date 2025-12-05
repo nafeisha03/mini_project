@@ -114,7 +114,7 @@ def require_login():
 
 @st.cache_resource
 def get_db_url():
-    POSTGRES_USERNAME = st.secrets["POSTGRES_USERNAME"]
+    POSTGRES_USERNAME = st.secrets["POSTGRES_USERNAME"] 
     POSTGRES_PASSWORD = st.secrets["POSTGRES_PASSWORD"]
     POSTGRES_SERVER = st.secrets["POSTGRES_SERVER"]
     POSTGRES_DATABASE = st.secrets["POSTGRES_DATABASE"]
@@ -311,9 +311,9 @@ def main():
         st.subheader("📜 Query History")
         for idx, item in enumerate(reversed(st.session_state.query_history[-5:])):
             with st.expander(f"Query {len(st.session_state.query_history)-idx}: {item['question'][:60]}..."):
-                st.markdown(f"**Question:** {item["question"]}")
+                st.markdown(f"**Question:** {item['question']}")
                 st.code(item["sql"], language="sql")
-                st.caption(f"Returned {item["rows"]} rows")
+                st.caption(f"Returned {item['rows']} rows")
                 if st.button(f"Re-run this query", key=f"rerun_{idx}"):
                     df = run_query(item["sql"])
                     if df is not None:

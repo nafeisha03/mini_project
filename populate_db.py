@@ -4,8 +4,10 @@ from psycopg2 import extras
 import csv
 from pathlib import Path
 import time
-
 from utils import get_db_url
+
+
+
 
 
 STAGING_CREATE_SQL = """
@@ -384,6 +386,7 @@ def build_facts(conn):
 
 # Main execution
 if __name__ == "__main__":
+
     
     DATABASE_URL = get_db_url()
     # Create tables
